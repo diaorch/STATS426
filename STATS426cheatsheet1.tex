@@ -1,0 +1,51 @@
+\documentclass[11pt, twoside, letterpaper]{article}
+
+\usepackage[margin=0.2in]{geometry}
+% \usepackage{fullpage}
+
+\usepackage{lscape}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{listings}
+
+\usepackage{tabularx,ragged2e,booktabs}
+\newcolumntype{L}{>{\RaggedRight\arraybackslash}X} % ragged-right version of "X"
+
+\begin{document}
+
+\title{STATS 426 cheatsheet}
+\author{diaorch}
+\date{20170208}
+
+\begin{landscape}
+
+
+
+\begin{center}
+\begin{tabular}{ |p{0.1\linewidth}|p{0.15\linewidth}|c|c|c|c|c|c| }
+ \hline
+  &  & pmf,pdf & cdf & E & Var & Mode & MGF\\  \hline
+ Bernoulli &  & $p, (1-p)$ & & $p$ & $pq$ & 0;0,1;1 & $q+pe^t$\\ \hline
+ Binomial $B(n,p)$ & \# of success in $n$ trials & $\binom{n}{k} p^k (1-p)^{n-k}$ & & $np$ & $np(1-p)$ & $\lfloor np \rfloor$, $\lceil np \rceil$ & $(q+pe^t)^n$ \\ \hline
+ Hyper-Geometric $(N,n,K)$ & k success in n draws, in population N with K success &  $\frac{\binom{K}{k}\binom{N-K}{n-k}}{\binom{N}{n}}$ & & $n\frac{K}{N}$ & $n \frac{K}{N} \frac{N-K}{N} \frac{N-n}{N-1}$ & $\lfloor \frac{(n+1)(K+1)}{N+2} \rfloor$ & \\ \hline
+ Geometric $(p)$ & \# of trials on which 1st success occurs & $(1-p)^{k-1}p$ & & $\frac{1}{p}$ & $\frac{1-p}{p^2}$ & 1 & $\frac{pe^t}{1-(1-p)e^t}$ \\ \hline
+ Negative Binomial $NB(r,p)$ & \# of trials on which r-th success occurs & $\binom{k+r-1}{k} \cdot (1-p)^r p^k$ & & $\frac{pr}{1-p}$ & $\frac{pr}{(1-p)^2}$ & $\lfloor \frac{p(r-1)}{1-p} \rfloor$ if $r>1$ & $(\frac{1-p}{1-pe^t})^r$ \\ \hline
+ Poisson $(\lambda)$ & \# of success on an interval of time (0,t) & $\frac{\lambda^k e^{-\lambda}}{k!}$ & & $\lambda$ & $\lambda$ & $\lceil \lambda \rceil -1, \lfloor \lambda \rfloor$ & exp$(\lambda(e^t -1))$ \\ \hline \hline
+ Discrete Uniform $unif\{a,b\}$ & & $n=b-a+1, \frac{1}{n}$ & $\frac{\lfloor k \rfloor - a +1}{n}$ & $\frac{a + b}{2}$ & $\frac{(b-a+1)^2 - 1}{12}$ & N/A & $\frac{e^{at} - e^{(b-1)t}}{n(1 - e^t)}$ \\ \hline
+ Continuous Uniform $unif(a,b)$ & & $\frac{1}{b - a}$ & $\frac{x - a}{b - a}$ & $\frac{a + b}{2}$ & $\frac{(b - a)^2}{12}$ & any value in $(a,b)$ & $\frac{e^{tb} - e^{ta}}{t(b - a)}$ for $t \neq 1$ \\ \hline \hline
+ Exponential $(\lambda > 0)$ & time until 1st success & $\lambda e^{-\lambda x}$ & $1 - e^{-\lambda x}$ & $\lambda^{-1} = \beta$ & $\lambda^{-2} = \beta^2$ & 0 & $\frac{\lambda}{\lambda - t}$, for $t < \lambda$ \\ \hline
+ Gamma $(\alpha, \beta)$ & time untile $\alpha$-th success & $\frac{\beta^\alpha}{\Gamma(\alpha)} x^{\alpha -1} e^{-\beta x}$ & & $\frac{\alpha}{\beta}$ & $\frac{\alpha}{\beta^2}$ & $\frac{\alpha - 1}{\beta}$ for $\alpha \geq 1$ & $(1 - \frac{t}{\beta})^{-\alpha}$ for $t < \beta$ \\ \hline
+ Chi-square $(k)$ & & $\frac{1}{2^{\frac{k}{2}} \Gamma(\frac{k}{2})} x^{\frac{k}{2} - 1} e^{-\frac{x}{2}}$ & & $k$ & $2k$ & $max{k-2, 0}$ & $(1-2t)^{-k/2}$ \\ \hline
+ Normal $N(\mu, \sigma^2)$ & & $\frac{1}{\sqrt{2\pi}\sigma} e^{-\frac{(x - \mu)^2}{2\sigma^2}}$ & & $\mu$ & $\sigma^2$ & $\mu$ & exp$\{\mu t + \frac{1}{2} \sigma^2 t^2 \}$ \\ \hline
+ Beta $(\alpha, \beta)$ & & $\frac{x^{\alpha -1 }(1 - x)^{\beta - 1}}{B(\alpha, \beta)}$, $B(\alpha, \beta) = \frac{\Gamma(\alpha) \Gamma(\beta)}{\Gamma(\alpha + \beta)}$ & & $\frac{\alpha}{\alpha + \beta}$ & $\frac{\alpha \beta}{(\alpha + \beta)^2 (\alpha + \beta + 1)}$ & $\frac{\alpha - 1}{\alpha + \beta - 2}$ & \\ \hline
+
+\end{tabular}
+\end{center}
+
+\end{landscape}
+
+\end{document}
+\grid
